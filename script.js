@@ -1,9 +1,7 @@
 
 
-// Array to hold cart items
 let cart = [];
 
-// Function to add item to cart
 function addToCart(name, price) {
   let item = cart.find(item => item.name === name);
   if (item) {
@@ -14,13 +12,12 @@ function addToCart(name, price) {
   updateCart();
 }
 
-// Function to remove item from cart
+
 function removeFromCart(name) {
   cart = cart.filter(item => item.name !== name);
   updateCart();
 }
 
-// Function to update item quantity
 function updateQuantity(name, quantity) {
   let item = cart.find(item => item.name === name);
   if (item) {
@@ -33,14 +30,12 @@ function updateQuantity(name, quantity) {
   }
 }
 
-// Function to update the cart display
 function updateCart() {
   let cartItems = document.getElementById('cartItems');
   cartItems.innerHTML = ''; // Clear existing items
 
   cart.forEach(item => {
     let li = document.createElement('li');
-    // Using backticks for template literals and standard quotes for attributes
     li.innerHTML = `
       ${item.name} - Rs.${item.price} x ${item.quantity}
       <button onclick="removeFromCart('${item.name}')">Remove</button>
@@ -50,3 +45,4 @@ function updateCart() {
     cartItems.appendChild(li);
   });
 }
+
